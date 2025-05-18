@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="bitcoinGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F7931A" />
+      <stop offset="100%" stop-color="#FFBA56" />
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="30" fill="#243858" />
+  <text x="32" y="32" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="url(#bitcoinGradient)" text-anchor="middle" dominant-baseline="central">C14</text>
+  <path d="M32,2 A30,30 0 0,1 62,32" stroke="url(#bitcoinGradient)" stroke-width="4" fill="none" />
+</svg> 

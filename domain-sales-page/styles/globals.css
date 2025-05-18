@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #F7931A; /* Bitcoin Orange */
+  --secondary-color: #9CBCEB;
+  --accent-color: #243858;
+  --dark-bg: #1A202C;
+  --text-color: #333333;
+  --light-text-color: #666666;
+  --bg-color: #f8f9fa;
+  --crypto-green: #25D366;
+  --gradient-end: #FFBA56;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  color: var(--text-color);
+  background-color: var(--bg-color);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+} 
