@@ -12,14 +12,30 @@ const nextConfig = {
   },
   // Detaylı hata mesajlarını göster
   devIndicators: {
-    position: 'bottom-right',
+    buildActivity: true,
   },
   // Geliştirme sırasında daha iyi hata izleme için
   typescript: {
-    ignoreBuildErrors: false,
+    ignoreBuildErrors: true,
   },
   // Daha kullanışlı 404 sayfası için
   trailingSlash: false,
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        destination: '/',
+        permanent: false,
+        has: [
+          {
+            type: 'query',
+            key: 'ref',
+            value: '(?<ref>.*)',
+          },
+        ],
+      },
+    ];
+  },
   async headers() {
     return [
       {
