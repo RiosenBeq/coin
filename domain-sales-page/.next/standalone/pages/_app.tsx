@@ -3,7 +3,10 @@ import '../styles/App.css';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import ErrorPage from './_error';
+import dynamic from 'next/dynamic';
+
+const ErrorPage = dynamic(() => import('./404'));
+const CustomErrorPage = dynamic(() => import('./_error'));
 
 interface MyAppProps extends AppProps {
   err?: any;
@@ -36,7 +39,7 @@ function MyApp({ Component, pageProps, err }: MyAppProps) {
   }, [router]);
 
   if (err) {
-    return <ErrorPage statusCode={err.statusCode || 500} />;
+    return <CustomErrorPage statusCode={err.statusCode || 500} />;
   }
 
   return <Component {...pageProps} />;

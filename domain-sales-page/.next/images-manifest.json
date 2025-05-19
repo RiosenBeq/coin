@@ -24,9 +24,7 @@
     "path": "/_next/image",
     "loader": "default",
     "loaderFile": "",
-    "domains": [
-      "img.icons8.com"
-    ],
+    "domains": [],
     "disableStaticImages": false,
     "minimumCacheTTL": 60,
     "formats": [

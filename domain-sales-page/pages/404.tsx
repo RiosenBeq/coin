@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Head from 'next/head'
 import styles from '../styles/404.module.css'
+import { GetStaticProps } from 'next'
 
 export default function Custom404() {
   return (
@@ -8,6 +9,7 @@ export default function Custom404() {
       <Head>
         <title>404 - Sayfa Bulunamadı</title>
         <meta name="description" content="Sayfa bulunamadı" />
+        <meta name="robots" content="noindex" />
       </Head>
       <div className={styles.errorContent}>
         <h1>404</h1>
@@ -21,9 +23,12 @@ export default function Custom404() {
   )
 }
 
-// Bu fonksiyon sayfanın derleme sırasında statik olarak oluşturulmasını sağlayacak
-export function getStaticProps() {
+// Next.js'in static site generation özelliğini kullanarak 
+// bu sayfayı build sırasında oluşturalım
+export const getStaticProps: GetStaticProps = () => {
   return {
     props: {}, // Boş props
+    // Diğer tüm 404 rotalarını buraya yönlendirecek
+    notFound: false
   }
 } 

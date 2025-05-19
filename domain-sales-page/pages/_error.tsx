@@ -1,4 +1,4 @@
-import { NextPage } from 'next';
+import { NextPage, NextPageContext } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import styles from '../styles/404.module.css';
@@ -13,6 +13,7 @@ const ErrorPage: NextPage<ErrorProps> = ({ statusCode }) => {
       <Head>
         <title>{statusCode ? `Hata ${statusCode}` : 'Sunucu Hatası'}</title>
         <meta name="description" content={statusCode ? `Hata ${statusCode}` : 'Sunucu Hatası'} />
+        <meta name="robots" content="noindex" />
       </Head>
       <div className={styles.errorContent}>
         <h1>{statusCode || 'Hata'}</h1>
@@ -30,7 +31,7 @@ const ErrorPage: NextPage<ErrorProps> = ({ statusCode }) => {
   );
 };
 
-ErrorPage.getInitialProps = ({ res, err }) => {
+ErrorPage.getInitialProps = ({ res, err }: NextPageContext): ErrorProps => {
   const statusCode = res ? res.statusCode : err ? (err as any).statusCode : 404;
   return { statusCode };
 };

@@ -9,21 +9,20 @@ const nextConfig = {
         hostname: 'img.icons8.com',
       },
     ],
-    domains: ['img.icons8.com'], // Eski ve yeni yöntemleri birlikte destekleyelim
   },
   trailingSlash: false,
-  // Basitleştirilmiş fallback yapılandırması
+  // 404 sayfası için basitleştirilmiş fallback yapılandırması
   async rewrites() {
     return {
-      // Fallback rotaları burada tanımlayalım
       fallback: [
         {
           source: '/:path*',
-          destination: '/404',
+          destination: '/404'
         },
       ],
     };
   },
+  // Güvenlik başlıkları
   async headers() {
     return [
       {
@@ -34,6 +33,14 @@ const nextConfig = {
             value: process.env.NODE_ENV === 'development' 
               ? '' 
               : "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://img.icons8.com data:; connect-src 'self' https://api.whatsapp.com; frame-src 'none';"
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block'
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff'
           }
         ],
       },
