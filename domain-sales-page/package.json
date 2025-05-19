@@ -24,7 +24,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "vercel-build": "next build"
+    "vercel-build": "next build",
+    "export": "next build && next export"
   },
   "eslintConfig": {
     "extends": [

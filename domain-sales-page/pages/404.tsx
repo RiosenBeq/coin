@@ -19,4 +19,11 @@ export default function Custom404() {
       </div>
     </div>
   )
+}
+
+// Bu fonksiyon sayfanın derleme sırasında statik olarak oluşturulmasını sağlayacak
+export function getStaticProps() {
+  return {
+    props: {}, // Boş props
+  }
 } 

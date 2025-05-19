@@ -39,7 +39,12 @@
       "namedRegex": "^/404(?:/)?$"
     }
   ],
-  "dataRoutes": [],
+  "dataRoutes": [
+    {
+      "page": "/404",
+      "dataRouteRegex": "^/_next/data/6plP5ke81DeG_0D4b0brp/404\\.json$"
+    }
+  ],
   "rsc": {
     "header": "RSC",
     "varyHeader": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Router-Segment-Prefetch",
@@ -56,5 +61,22 @@
     "pathHeader": "x-nextjs-rewritten-path",
     "queryHeader": "x-nextjs-rewritten-query"
   },
-  "rewrites": []
+  "rewrites": [
+    {
+      "source": "/:path*",
+      "destination": "/:path*",
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))?(?:/)?$"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-not-found"
+        }
+      ],
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))?(?:/)?$"
+    }
+  ]
 }

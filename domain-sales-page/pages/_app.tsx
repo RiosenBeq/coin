@@ -3,7 +3,7 @@ import '../styles/App.css';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import ErrorPage from './_error';
+import ErrorPage from 'pages/_error';
 
 interface MyAppProps extends AppProps {
   err?: any;

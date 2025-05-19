@@ -11,6 +11,25 @@ const nextConfig = {
     ],
   },
   trailingSlash: false,
+  // Custom rewrites for handling routes
+  async rewrites() {
+    return [
+      {
+        source: '/:path*',
+        destination: '/:path*',
+      },
+      {
+        source: '/:path*',
+        destination: '/',
+        has: [
+          {
+            type: 'header',
+            key: 'x-not-found',
+          },
+        ],
+      },
+    ];
+  },
   async headers() {
     return [
       {
