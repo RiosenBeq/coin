@@ -1,4 +1,4 @@
-import { NextPage, NextPageContext } from 'next';
+import { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import styles from '../styles/404.module.css';
@@ -7,15 +7,15 @@ interface ErrorProps {
   statusCode?: number;
 }
 
-const Error: NextPage<ErrorProps> = ({ statusCode }) => {
+const ErrorPage: NextPage<ErrorProps> = ({ statusCode }) => {
   return (
     <div className={styles.errorContainer}>
       <Head>
-        <title>{statusCode ? `${statusCode} - Hata` : 'Hata'}</title>
-        <meta name="description" content="Bir hata oluştu" />
+        <title>{statusCode ? `Hata ${statusCode}` : 'Sunucu Hatası'}</title>
+        <meta name="description" content={statusCode ? `Hata ${statusCode}` : 'Sunucu Hatası'} />
       </Head>
       <div className={styles.errorContent}>
-        <h1>{statusCode || 'Error'}</h1>
+        <h1>{statusCode || 'Hata'}</h1>
         <h2>Bir sorun oluştu</h2>
         <p>
           {statusCode
@@ -30,9 +30,9 @@ const Error: NextPage<ErrorProps> = ({ statusCode }) => {
   );
 };
 
-Error.getInitialProps = ({ res, err }: NextPageContext): ErrorProps => {
+ErrorPage.getInitialProps = ({ res, err }) => {
   const statusCode = res ? res.statusCode : err ? (err as any).statusCode : 404;
   return { statusCode };
 };
 
-export default Error; 
+export default ErrorPage; 

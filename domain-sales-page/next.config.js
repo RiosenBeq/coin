@@ -9,26 +9,20 @@ const nextConfig = {
         hostname: 'img.icons8.com',
       },
     ],
+    domains: ['img.icons8.com'], // Eski ve yeni yöntemleri birlikte destekleyelim
   },
   trailingSlash: false,
-  // Custom rewrites for handling routes
+  // Basitleştirilmiş fallback yapılandırması
   async rewrites() {
-    return [
-      {
-        source: '/:path*',
-        destination: '/:path*',
-      },
-      {
-        source: '/:path*',
-        destination: '/',
-        has: [
-          {
-            type: 'header',
-            key: 'x-not-found',
-          },
-        ],
-      },
-    ];
+    return {
+      // Fallback rotaları burada tanımlayalım
+      fallback: [
+        {
+          source: '/:path*',
+          destination: '/404',
+        },
+      ],
+    };
   },
   async headers() {
     return [

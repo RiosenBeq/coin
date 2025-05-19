@@ -3,7 +3,7 @@ import '../styles/App.css';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import ErrorPage from 'pages/_error';
+import ErrorPage from './_error';
 
 interface MyAppProps extends AppProps {
   err?: any;
@@ -41,22 +41,5 @@ function MyApp({ Component, pageProps, err }: MyAppProps) {
 
   return <Component {...pageProps} />;
 }
-
-MyApp.getInitialProps = async (appContext: any) => {
-  const { Component, ctx } = appContext;
-  let pageProps = {};
-
-  try {
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-    }
-  } catch (error) {
-    console.error('Error in getInitialProps:', error);
-    const statusCode = error && (error as any).statusCode ? (error as any).statusCode : 500;
-    return { pageProps: { statusCode } };
-  }
-
-  return { pageProps };
-};
 
 export default MyApp; 

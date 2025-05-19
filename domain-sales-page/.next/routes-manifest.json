@@ -42,7 +42,7 @@
   "dataRoutes": [
     {
       "page": "/404",
-      "dataRouteRegex": "^/_next/data/6plP5ke81DeG_0D4b0brp/404\\.json$"
+      "dataRouteRegex": "^/_next/data/xC2d_lKKph7CP8wSGkrrV/404\\.json$"
     }
   ],
   "rsc": {
@@ -61,22 +61,15 @@
     "pathHeader": "x-nextjs-rewritten-path",
     "queryHeader": "x-nextjs-rewritten-query"
   },
-  "rewrites": [
-    {
-      "source": "/:path*",
-      "destination": "/:path*",
-      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))?(?:/)?$"
-    },
-    {
-      "source": "/:path*",
-      "destination": "/",
-      "has": [
-        {
-          "type": "header",
-          "key": "x-not-found"
-        }
-      ],
-      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))?(?:/)?$"
-    }
-  ]
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [],
+    "fallback": [
+      {
+        "source": "/:path*",
+        "destination": "/404",
+        "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))?(?:/)?$"
+      }
+    ]
+  }
 }
