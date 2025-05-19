@@ -1,7 +1,7 @@
 {
   "version": 2,
   "buildCommand": "npm run build",
-  "outputDirectory": ".next",
+  "outputDirectory": "out",
   "public": false,
-  "framework": "nextjs"
+  "cleanUrls": true
 } 

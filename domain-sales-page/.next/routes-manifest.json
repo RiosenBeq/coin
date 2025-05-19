@@ -12,26 +12,7 @@
       "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
     }
   ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://img.icons8.com data:; connect-src 'self' https://api.whatsapp.com; frame-src 'none';"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        }
-      ],
-      "regex": "^(?:/(.*))(?:/)?$"
-    }
-  ],
+  "headers": [],
   "dynamicRoutes": [],
   "staticRoutes": [
     {
@@ -49,8 +30,12 @@
   ],
   "dataRoutes": [
     {
+      "page": "/",
+      "dataRouteRegex": "^/_next/data/xHiGNt\\-OIUisKGQk4keIc/index\\.json$"
+    },
+    {
       "page": "/404",
-      "dataRouteRegex": "^/_next/data/cHe5vr\\-YwFC2FEZJ7Ys_n/404\\.json$"
+      "dataRouteRegex": "^/_next/data/xHiGNt\\-OIUisKGQk4keIc/404\\.json$"
     }
   ],
   "rsc": {

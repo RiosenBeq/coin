@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { GetStaticProps } from 'next';
 
 export default function Home() {
   const [domainInfo] = useState({
@@ -460,4 +461,11 @@ export default function Home() {
       </button>
     </div>
   );
-} 
+}
+
+// Sayfa için statik önoluşturma yapılandırması
+export const getStaticProps: GetStaticProps = async () => {
+  return {
+    props: {}
+  };
+}; 

@@ -3,11 +3,10 @@ import '../styles/App.css';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import dynamic from 'next/dynamic';
 
-// Dinamik importlarda isimlendirme düzeltildi, NoSSR özelliği ile SSR dışında çalışacak
-const Custom404Page = dynamic(() => import('./404'), { ssr: true });
-const CustomErrorComponent = dynamic(() => import('./_error'), { ssr: true });
+// Normal import kullanarak hata durumlarını daha iyi yönetiyoruz
+import Custom404 from './404';
+import CustomError from './_error';
 
 interface MyAppProps extends AppProps {
   err?: any;
@@ -21,27 +20,21 @@ function MyApp({ Component, pageProps, err }: MyAppProps) {
       console.log(`Navigating to: ${url}`);
     };
 
-    const handleRouteChangeError = (err: any, url: string) => {
-      console.error(`Error navigating to ${url}:`, err);
-      if (err.cancelled) {
-        console.log('Route change was cancelled');
-      } else {
-        router.push('/404');
-      }
-    };
-
     router.events.on('routeChangeStart', handleRouteChange);
-    router.events.on('routeChangeError', handleRouteChangeError);
 
     return () => {
       router.events.off('routeChangeStart', handleRouteChange);
-      router.events.off('routeChangeError', handleRouteChangeError);
     };
   }, [router]);
 
   // Hata durumunda CustomError bileşenini göster
   if (err) {
-    return <CustomErrorComponent statusCode={err.statusCode || 500} />;
+    return <CustomError statusCode={err.statusCode || 500} />;
+  }
+
+  // 404 durumunu router ile yakalayıp yönetiyoruz
+  if (router.pathname === '/404') {
+    return <Custom404 />;
   }
 
   return <Component {...pageProps} />;
