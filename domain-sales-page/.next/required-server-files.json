@@ -64,11 +64,11 @@
       "unoptimized": false
     },
     "devIndicators": {
-      "position": "bottom-left"
+      "position": "bottom-right"
     },
     "onDemandEntries": {
-      "maxInactiveAge": 60000,
-      "pagesBufferLength": 5
+      "maxInactiveAge": 25000,
+      "pagesBufferLength": 2
     },
     "amp": {
       "canonicalBase": ""
