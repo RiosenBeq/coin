@@ -5,8 +5,9 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import dynamic from 'next/dynamic';
 
-const ErrorPage = dynamic(() => import('./404'));
-const CustomErrorPage = dynamic(() => import('./_error'));
+// Dinamik importlarda isimlendirme düzeltildi, NoSSR özelliği ile SSR dışında çalışacak
+const Custom404Page = dynamic(() => import('./404'), { ssr: true });
+const CustomErrorComponent = dynamic(() => import('./_error'), { ssr: true });
 
 interface MyAppProps extends AppProps {
   err?: any;
@@ -38,8 +39,9 @@ function MyApp({ Component, pageProps, err }: MyAppProps) {
     };
   }, [router]);
 
+  // Hata durumunda CustomError bileşenini göster
   if (err) {
-    return <CustomErrorPage statusCode={err.statusCode || 500} />;
+    return <CustomErrorComponent statusCode={err.statusCode || 500} />;
   }
 
   return <Component {...pageProps} />;

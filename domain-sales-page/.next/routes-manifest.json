@@ -14,7 +14,7 @@
   ],
   "headers": [
     {
-      "source": "/:path*",
+      "source": "/(.*)",
       "headers": [
         {
           "key": "Content-Security-Policy",
@@ -29,7 +29,7 @@
           "value": "nosniff"
         }
       ],
-      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))?(?:/)?$"
+      "regex": "^(?:/(.*))(?:/)?$"
     }
   ],
   "dynamicRoutes": [],
@@ -50,7 +50,7 @@
   "dataRoutes": [
     {
       "page": "/404",
-      "dataRouteRegex": "^/_next/data/GIKKCsBesTTyZbCey2aPr/404\\.json$"
+      "dataRouteRegex": "^/_next/data/cHe5vr\\-YwFC2FEZJ7Ys_n/404\\.json$"
     }
   ],
   "rsc": {
@@ -69,15 +69,5 @@
     "pathHeader": "x-nextjs-rewritten-path",
     "queryHeader": "x-nextjs-rewritten-query"
   },
-  "rewrites": {
-    "beforeFiles": [],
-    "afterFiles": [],
-    "fallback": [
-      {
-        "source": "/:path*",
-        "destination": "/404",
-        "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))?(?:/)?$"
-      }
-    ]
-  }
+  "rewrites": []
 }

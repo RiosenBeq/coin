@@ -286,16 +286,6 @@
     "configFileName": "next.config.js",
     "turbopack": {
       "root": "/Users/okanberkmanavoglu/Downloads/domain/domain-sales-page"
-    },
-    "_originalRewrites": {
-      "beforeFiles": [],
-      "afterFiles": [],
-      "fallback": [
-        {
-          "source": "/:path*",
-          "destination": "/404"
-        }
-      ]
     }
   },
   "appDir": "/Users/okanberkmanavoglu/Downloads/domain/domain-sales-page",
