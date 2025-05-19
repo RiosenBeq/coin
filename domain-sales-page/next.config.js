@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  output: 'standalone',
   images: {
     remotePatterns: [
       {
@@ -9,69 +10,12 @@ const nextConfig = {
       },
     ],
   },
-  onDemandEntries: {
-    // Page cache duration in memory (ms)
-    maxInactiveAge: 25 * 1000,
-    // Maximum number of pages to keep in memory
-    pagesBufferLength: 2,
-  },
-  // Show detailed error messages
-  devIndicators: {
-    buildActivity: true,
-  },
-  // Better error tracking during development
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  // For better 404 page handling
   trailingSlash: false,
-  async redirects() {
-    return [
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'query',
-            key: 'ref',
-            value: '(?<ref>.*)',
-          },
-        ],
-        destination: '/',
-        permanent: false,
-      },
-    ];
-  },
-  async rewrites() {
-    return {
-      fallback: [
-        {
-          source: '/:path*',
-          destination: '/404',
-        },
-      ],
-    };
-  },
   async headers() {
     return [
       {
         source: '/:path*',
         headers: [
-          {
-            key: 'X-DNS-Prefetch-Control',
-            value: 'on'
-          },
-          {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block'
-          },
-          {
-            key: 'X-Frame-Options',
-            value: 'SAMEORIGIN'
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff'
-          },
           {
             key: 'Content-Security-Policy',
             value: process.env.NODE_ENV === 'development' 
