@@ -24,8 +24,6 @@ const nextConfig = {
     return [
       {
         source: '/:path*',
-        destination: '/',
-        permanent: false,
         has: [
           {
             type: 'query',
@@ -33,8 +31,20 @@ const nextConfig = {
             value: '(?<ref>.*)',
           },
         ],
+        destination: '/',
+        permanent: false,
       },
     ];
+  },
+  async rewrites() {
+    return {
+      fallback: [
+        {
+          source: '/:path*',
+          destination: '/404',
+        },
+      ],
+    };
   },
   async headers() {
     return [
