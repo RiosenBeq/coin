@@ -1,11 +1,15 @@
 import '../styles/globals.css';
 import '../styles/App.css';
 import type { AppProps } from 'next/app';
-import { NextPageContext } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import Error from './_error';
 
-function MyApp({ Component, pageProps }: AppProps) {
+interface MyAppProps extends AppProps {
+  err?: any;
+}
+
+function MyApp({ Component, pageProps, err }: MyAppProps) {
   const router = useRouter();
 
   useEffect(() => {
@@ -31,10 +35,15 @@ function MyApp({ Component, pageProps }: AppProps) {
     };
   }, [router]);
 
+  if (err) {
+    return <Error statusCode={err.statusCode || 500} />;
+  }
+
   return <Component {...pageProps} />;
 }
 
-MyApp.getInitialProps = async ({ Component, ctx }: any) => {
+MyApp.getInitialProps = async (appContext: any) => {
+  const { Component, ctx } = appContext;
   let pageProps = {};
 
   try {
@@ -43,10 +52,8 @@ MyApp.getInitialProps = async ({ Component, ctx }: any) => {
     }
   } catch (error) {
     console.error('Error in getInitialProps:', error);
-    if (ctx.res) {
-      ctx.res.statusCode = 404;
-    }
-    return { pageProps: { statusCode: 404 } };
+    const statusCode = error && (error as any).statusCode ? (error as any).statusCode : 500;
+    return { pageProps: { statusCode } };
   }
 
   return { pageProps };
