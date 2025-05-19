@@ -45,6 +45,7 @@ For example, to change the domain information, update the `domainInfo` state in 
 ## Color Scheme
 
 The project uses a vibrant, conversion-optimized color palette:
+
 - Primary: #FF6B35 (Orange)
 - Secondary: #F7C59F (Light Orange)
 - Accent: #004E89 (Deep Blue)

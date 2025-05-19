@@ -5,20 +5,20 @@ const nextConfig = {
     domains: ['img.icons8.com'],
   },
   onDemandEntries: {
-    // Sayfaların bellekte tutulma süresi (ms)
+    // Page cache duration in memory (ms)
     maxInactiveAge: 25 * 1000,
-    // Aynı anda bellekte tutulacak maksimum sayfa sayısı
+    // Maximum number of pages to keep in memory
     pagesBufferLength: 2,
   },
-  // Detaylı hata mesajlarını göster
+  // Show detailed error messages
   devIndicators: {
     buildActivity: true,
   },
-  // Geliştirme sırasında daha iyi hata izleme için
+  // Better error tracking during development
   typescript: {
     ignoreBuildErrors: true,
   },
-  // Daha kullanışlı 404 sayfası için
+  // For better 404 page handling
   trailingSlash: false,
   async redirects() {
     return [
@@ -54,7 +54,7 @@ const nextConfig = {
           {
             key: 'Content-Security-Policy',
             value: process.env.NODE_ENV === 'development' 
-              ? '' // Geliştirme modunda CSP'yi devre dışı bırak
+              ? '' // Disable CSP in development mode
               : "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://img.icons8.com data:; connect-src 'self' https://api.whatsapp.com; frame-src 'none';"
           }
         ],
