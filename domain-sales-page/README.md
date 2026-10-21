@@ -1,70 +1,35 @@
-# Premium Domain Sales Page
+# Coin14.com – Domain Sales Page
 
-This project provides a modern, conversion-focused sales page for premium domain names. Built with React and TypeScript.
+Landing page for selling the premium domain **Coin14.com** and the rest of the domain portfolio.
+Built with Next.js (pages router, static export) and deployed on Vercel.
 
 ## Features
 
-- Eye-catching, professional design
-- Mobile-responsive layout
-- Premium domain showcase
-- Feature highlights
-- Testimonials section
-- Contact form with validation
-- SEO-friendly structure
+- Dark, crypto-themed design inspired by Dan.com / Afternic / Atom domain landing pages
+- Hero with price, "Buy now" and "Make an offer" calls to action, trust badges and domain facts
+- Use cases, benefits, 3-step purchase process, filterable portfolio and FAQ
+- Offer form that opens a pre-filled WhatsApp message
+- SEO: meta tags, canonical URL, Open Graph / Twitter cards, JSON-LD
+  (Organization, WebSite, WebPage, Product, ItemList, FAQPage), `sitemap.xml`, `robots.txt`
+- Accessible: semantic headings, labelled form fields, skip link, keyboard focus styles,
+  `prefers-reduced-motion` support
+- Security headers (CSP, HSTS, etc.) configured in `vercel.json`
 
-## Installation
-
-Follow these steps to run the project on your local machine:
+## Development
 
 ```bash
-# Clone the repository
-git clone <repo-url>
-
-# Navigate to the project directory
-cd domain-sales-page
-
-# Install dependencies
 npm install
-
-# Start the development server
-npm start
+npm run dev     # http://localhost:3000
+npm run lint
+npm run build   # static export to ./out
 ```
 
-Visit `http://localhost:3000` in your browser to view the application.
+## Customisation
 
-## Customization
+- `lib/site.ts` – domain name, price, contact number, portfolio domains and FAQ
+- `pages/index.tsx` – page sections and SEO tags
+- `styles/globals.css` – design tokens (colours, radii) and all styles
+- `public/` – icons, `og-image.png`, `sitemap.xml`, `robots.txt`, `manifest.json`
 
-You can customize the following files to fit your needs:
-
-- `src/App.tsx`: Main component and content
-- `src/App.css`: Styling and design properties
-- `src/index.css`: Global style definitions and color palette
-
-For example, to change the domain information, update the `domainInfo` state in `App.tsx`.
-
-## Color Scheme
-
-The project uses a vibrant, conversion-optimized color palette:
-
-- Primary: #FF6B35 (Orange)
-- Secondary: #F7C59F (Light Orange)
-- Accent: #004E89 (Deep Blue)
-- Text: #2A2D34 (Dark Gray)
-
-## Deployment
-
-To build the project for production:
-
-```bash
-npm run build
-```
-
-This command generates an optimized build in the `build` folder, which you can deploy to any static hosting service.
-
-## License
-
-MIT
-
-## Contact
-
-For questions about this project, please reach out.
+When the price or portfolio changes, also update `public/og-image.png` (it shows the price)
+and the `lastmod` date in `public/sitemap.xml`.

@@ -4,14 +4,8 @@ const nextConfig = {
   output: 'export',
   images: {
     unoptimized: true,
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'img.icons8.com',
-      },
-    ],
   },
-  trailingSlash: false
+  trailingSlash: false,
 };
 
-module.exports = nextConfig; 
+module.exports = nextConfig;
